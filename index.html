@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf Apps</title>
+
+    <!-- ========== TAB ICON ==========-->
+    <link rel="shortcut icon" href="assets/logo-1.png" />
+
+    <!-- ========== CSS ==========-->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      .swal2-popup {
+        font-size: 0.9rem !important;
+      }
+    </style>
+
+    <!-- ========== ICONSCOUT CSS ==========-->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <h1>BOOKSHELF APPS</h1>
+        <img src="assets/logo.png" alt="logo" />
+      </div>
+      <div class="mode">
+        <i class="uil uil-sun"></i>
+        <div class="mode-toggle">
+          <span class="switch"></span>
+        </div>
+        <i class="uil uil-moon"></i>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container-1">
+        <div class="box box-1">
+          <h2>Ringkasan Jumlah Buku</h2>
+          <h5>Jumlah buku anda akan tampil di bawah ini</h5>
+          <div class="boxs-shortcut">
+            <div class="box-shortcut">
+              <div class="shortcut-count shortcut-count-1">
+                <span></span>
+              </div>
+              <div class="shortcut-title">
+                <div class="icon icon-1">
+                  <i class="uil uil-books"></i>
+                </div>
+                <p>Jumlah buku</p>
+              </div>
+            </div>
+
+            <div class="box-shortcut">
+              <div class="shortcut-count shortcut-count-2">
+                <span></span>
+              </div>
+              <div class="shortcut-title">
+                <div class="icon icon-2">
+                  <i class="uil uil-diary"></i>
+                </div>
+                <p>Belum selesai dibaca</p>
+              </div>
+            </div>
+
+            <div class="box-shortcut">
+              <div class="shortcut-count shortcut-count-3">
+                <span></span>
+              </div>
+              <div class="shortcut-title">
+                <div class="icon icon-3">
+                  <i class="uil uil-diary-alt"></i>
+                </div>
+                <p>Selesai dibaca</p>
+              </div>
+            </div>
+          </div>
+          <form action="" id="form-submit-search" class="box-form-search">
+            <div class="box-form">
+              <div class="icon-form">
+                <i class="uil uil-search"></i>
+              </div>
+              <input
+                type="text"
+                class="form-controls"
+                id="keyword"
+                name="keyword"
+                placeholder="Cari buku..."
+                required
+              />
+            </div>
+            <button type="submit" id="submitSearch">Cari</button>
+          </form>
+        </div>
+
+        <div class="box box-2">
+          <h2>Tambah Buku</h2>
+          <h5>Tambahkan buku anda menggunakan formulir di bawah ini</h5>
+          <form action="" id="form-submit">
+            <div class="box-form">
+              <div class="icon-form">
+                <i class="uil uil-book-alt"></i>
+              </div>
+              <input
+                type="text"
+                class="form-controls"
+                id="title"
+                name="title"
+                placeholder="Judul buku"
+                required
+              />
+            </div>
+            <div class="box-form">
+              <div class="icon-form">
+                <i class="uil uil-user"></i>
+              </div>
+              <input
+                type="text"
+                class="form-controls"
+                id="author"
+                name="author"
+                placeholder="Penulis buku"
+                required
+              />
+            </div>
+            <div class="box-form">
+              <div class="icon-form">
+                <i class="uil uil-calendar-alt"></i>
+              </div>
+              <input
+                type="text"
+                class="form-controls"
+                id="year"
+                name="year"
+                placeholder="Tahun terbit buku"
+                required
+              />
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="check-box" />
+              <span>Selesai Dibaca</span>
+            </div>
+            <button type="submit" id="submit">Simpan</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="container-2">
+        <div class="box-3">
+          <div class="title-box">
+            <h2>Belum Selesai Dibaca</h2>
+            <div class="indicator indicator-1"></div>
+          </div>
+          <h5>Daftar buku yang belum selesai dibaca</h5>
+          <div class="book-boxs">
+            <p id="belum-selesai-dibaca" hidden>
+              "Belum ada buku yang ditambahkan"
+            </p>
+            <div id="unfinished"></div>
+          </div>
+        </div>
+        <div class="box-4">
+          <div class="title-box">
+            <h2>Selesai Dibaca</h2>
+            <div class="indicator indicator-2"></div>
+          </div>
+          <h5>Daftar buku yang selesai dibaca</h5>
+          <div class="book-boxs">
+            <p id="selesai-dibaca" hidden>"Belum ada buku yang ditambahkan"</p>
+            <div id="finished"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ========== MODAL ==========-->
+    <div id="myModal" class="modal" style="display: none">
+      <div class="modal-content">
+        <div class="container container-form" id="tambah-buku">
+          <h2>Edit Buku</h2>
+          <h5>Edit buku anda menggunakan formulir di bawah ini</h5>
+          <form action="" id="form-submit-modal">
+            <input type="hidden" id="id-modal" />
+            <input type="hidden" id="isComplete-modal" />
+            <div class="box-form">
+              <div class="icon-form">
+                <i class="uil uil-book-alt"></i>
+              </div>
+              <input
+                type="text"
+                class="form-controls"
+                id="title-modal"
+                name="title"
+                placeholder="Judul buku"
+                required
+              />
+            </div>
+            <div class="box-form">
+              <div class="icon-form">
+                <i class="uil uil-user"></i>
+              </div>
+              <input
+                type="text"
+                class="form-controls"
+                id="author-modal"
+                name="author"
+                placeholder="Penulis buku"
+                required
+              />
+            </div>
+            <div class="box-form">
+              <div class="icon-form">
+                <i class="uil uil-calendar-alt"></i>
+              </div>
+              <input
+                type="text"
+                class="form-controls"
+                id="year-modal"
+                name="year"
+                placeholder="Tahun terbit buku"
+                required
+              />
+            </div>
+            <div class="button-box">
+              <button type="reset" class="close" id="close">Batal</button>
+              <button type="submit" id="submit">Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="javaScript/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  </body>
+</html>
